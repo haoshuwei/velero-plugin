@@ -25,6 +25,7 @@ const (
 	networkTypeConfigKey     = "network"
 	networkTypeAccelerate    = "accelerate"
 	networkTypeInternal      = "internal"
+	resticPrefixConfigKey    = "resticRepoPrefix"
 )
 
 // RoleAuth define STS Token Response
