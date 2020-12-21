@@ -120,12 +120,14 @@ func (o *ObjectStore) Init(config map[string]string) error {
 			client, err = oss.New(endpoint, accessKeyID, accessKeySecret)
 		} else {
 			ramRole, err := getRamRole()
+			o.log.Infof("====================Start get ram role: %v", ramRole)
 			if err != nil {
 				return errors.Errorf("Failed to get ram role with err: %v", err)
 			}
 			o.ramRole = ramRole
 
 			accessKeyID, accessKeySecret, stsToken, err = getSTSAK(ramRole)
+			o.log.Infof("====================Start get STSAK: %v %v %v", accessKeyID, accessKeySecret, stsToken)
 			if err != nil {
 				return errors.Errorf("Failed to get sts token from ram role %s with err: %v", ramRole, err)
 			}
